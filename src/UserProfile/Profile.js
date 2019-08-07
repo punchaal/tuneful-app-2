@@ -17,15 +17,6 @@ import params from '../Services/get-spotify-token'
 const spotifyWebApi = new Spotify();
 const { Avatar, Typography } = atoms;
 
-function parseJwt(token) {
-  if (!token) { return; }
-  const base64Url = token.split('.')[1];
-  const base64 = base64Url.replace('-', '+').replace('_', '/');
-  return JSON.parse(window.atob(base64));
-}
-
-let token = localStorage.getItem('tuneful-app-token')
-let user_id = parseJwt(token).user_id
 
 const ProfilePage = () => {
 
