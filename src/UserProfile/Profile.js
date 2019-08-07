@@ -25,7 +25,7 @@ function parseJwt(token) {
 }
 
 let token = localStorage.getItem('tuneful-app-token')
-console.log(parseJwt(token))
+console.log(parseJwt(token).user_id)
 
 const ProfilePage = () => {
 
