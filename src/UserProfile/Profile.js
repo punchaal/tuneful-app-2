@@ -73,19 +73,6 @@ const ProfilePage = () => {
         setUserPostsState(posts)
       }
       )
-
-    spotifyWebApi.getMe()
-    .then((response) => {
-     setUserProfileState({
-        user: {
-           ...userProfileState.user,
-           name: response.display_name,
-           email: response.email,
-           image: response.images[0].url,
-         }
-       })
-     })       
-
   }, []);
 
   useEffect(() => {
@@ -148,6 +135,18 @@ const ProfilePage = () => {
                     </Typography>
                   </Grid>
                 </Grid>
+
+                <Grid container spacing={4}>
+          {userPostsState.reverse().map((item) => (
+            <Post
+              post_data={item}
+              key={item.id+1}
+              image_url={item.image_url}
+              id={item.id}
+            ></Post>
+
+          ))}
+        </Grid>
               </Box>
 
             </Grid>
