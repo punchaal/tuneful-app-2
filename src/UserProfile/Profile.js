@@ -40,8 +40,6 @@ const ProfilePage = () => {
 
   useEffect(() => {
     //with Hooks the useEffect repalces the componentDidMount. This stops the render from running this code eternally
-
-
     //get user data
     fetch(`https://murmuring-beyond-87321.herokuapp.com/api/users/${user_id}`)
       .then(results => {
@@ -76,24 +74,21 @@ const ProfilePage = () => {
         return results.json()
       })
       .then(posts => {
-        //   console.log(posts)       
         setUserPostsState(posts)
       }
       )
 
-    //SPOTIFY CODE from url
-    // spotifyWebApi.getMe()
-    // .then((response) => {
-    //   console.log(response)
-    //   setUserProfileState({
-    //     user: {
-    //       ...userProfileState.user,
-    //       name: response.display_name,
-    //       email: response.email,
-    //       image: response.images[0].url,
-    //     }
-    //   })
-    // })       
+    spotifyWebApi.getMe()
+    .then((response) => {
+     setUserProfileState({
+        user: {
+           ...userProfileState.user,
+           name: response.display_name,
+           email: response.email,
+           image: response.images[0].url,
+         }
+       })
+     })       
 
   }, []);
 
@@ -101,20 +96,16 @@ const ProfilePage = () => {
 
 
     try {
-      // console.log(userPostsState)
-      // userPostsState.map(item => console.log(item.id))
+       userPostsState.map(item => console.log(item.id))
     }
     catch (e) {
-      //  console.log("No user posts")
-      //  setUserPostsState([])
+        setUserPostsState([])
     }
 
   })
 
   const profileChange = (e) => {
     //grabs the data from EditProfile. It's an array, e[0] is the description text, and e[1] is the image file
-    console.log('PROFILE CHANGE')
-    console.log(e)
   }
 
   return (
@@ -168,7 +159,6 @@ const ProfilePage = () => {
         </Box>
 
         <Grid container spacing={4}>
-
           {userPostsState.reverse().map((item) => (
             <Post
               post_data={item}
@@ -178,7 +168,6 @@ const ProfilePage = () => {
             ></Post>
 
           ))}
-
         </Grid>
       </Box>
     </React.Fragment>
