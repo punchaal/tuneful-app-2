@@ -45,8 +45,8 @@ const useForm = (callback) => {
         TokenService.saveAuthToken(res.authToken)
       })
       .catch(res => {
-
         setError(res.error)
+        console.log(res.error)
       })
 
     window.setTimeout(() => {
