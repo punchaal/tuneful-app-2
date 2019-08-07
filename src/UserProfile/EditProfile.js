@@ -12,6 +12,7 @@ import Slide from '@material-ui/core/Slide';
 import useForm from "../Services/useForm";
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+import user_id from '../Services/get-user-id'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -76,7 +77,7 @@ export default function EditProfile(props) {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title">
 
-                <form onSubmit={setNewImage} className={classes.form} onError={errors => console.log(errors)}>
+                <form onSubmit={setNewDescription} className={classes.form} onError={errors => console.log(errors)}>
 
                     <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
 
