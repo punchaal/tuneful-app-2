@@ -43,7 +43,7 @@ const ProfilePage = () => {
 
 
     //get user data
-    fetch(`http://localhost:8000/api/users/${user_id}`)
+    fetch(`https://murmuring-beyond-87321.herokuapp.com/api/users/${user_id}`)
       .then(results => {
         return results.json()
       })
@@ -71,7 +71,7 @@ const ProfilePage = () => {
 
 
     //get the users posts and display them
-    fetch(`http://localhost:8000/api/posts/author/${user_id}`)
+    fetch(`https://murmuring-beyond-87321.herokuapp.com/api/posts/author/${user_id}`)
       .then(results => {
         return results.json()
       })
