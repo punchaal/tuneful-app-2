@@ -17,11 +17,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function EditProfile(props) {
+export default function EditProfile() {
     const [open, setOpen] = React.useState(false);
-    const { values,handleEditProfileSubmit, handleChange } = useForm();
-    const [photoData, setPhotoData] = React.useState("")
-    const [image_url, setImageUrl] = React.useState("")
+    const { values,handleEditProfileSubmit} = useForm();
 
     const useStyles = makeStyles({
         editButton: {
@@ -45,49 +43,7 @@ export default function EditProfile(props) {
         setOpen(false);
     }
   
-    const setNewImage =  (event) => {
-        event.preventDefault();
-        console.log(event)
-        const description = event.target.description
-        const theImage = photoData
-        console.log(theImage)
-        //post image to AWS, then grab url
-        const fd = new FormData();
-        fd.append('image', theImage)      
-
-        //POST comment to database
-       fetch('https://murmuring-beyond-87321.herokuapp.com/api/image-upload', {
-            method: 'POST',
-            body: fd,
-        })
-            .then(res =>
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json(),
-
-            ).then((data) => {
-                console.log(data)               
-                setImageUrl(data.imageUrl)              
-                console.log(image_url)
-                handleEditProfileSubmit(description, data.imageUrl)             
-            })          
-
-    }
-
-    const handleUploadPhotoLabel = (e) => {
-        const data = e.target.files[0]
-        //  console.log(data)      
-        setPhotoData(data)
-    }
-
-    useEffect(() => {
-
-    }, []);
-
-    useEffect(() => {
-        //update state    
-    })
-
+    
     return (
         <Box>
             <Button
@@ -108,10 +64,10 @@ export default function EditProfile(props) {
 
                     <DialogContent>
                         <DialogContentText>
-                            Please enter a description or upload a new profile picture.
+                            Please enter a description 
                    </DialogContentText>
                         <TextField
-                            onChange={handleChange}
+                            onChange={handleEditProfileSubmit}
                             autoFocus
                             value={values.description}
                             margin="dense"
@@ -120,22 +76,6 @@ export default function EditProfile(props) {
                             type="text"
                             fullWidth
                         />
-
-                        <input
-                            accept="image/*"
-                            className={classes.input}
-                            style={{ display: 'none' }}
-                            id="image_url"
-                            multiple
-                            type="file"
-                            onChange={handleUploadPhotoLabel}
-                        />
-                        <label htmlFor="image_url">
-                            <Button variant="outlined" component="span" className={classes.uploadPhotoButton}>
-                                Upload Photo
-                        </Button>
-                        </label>
-
                         <Box component="span" display="block">
                             <Typography variant="caption">
                                 {photoData.name}       
