@@ -56,7 +56,7 @@ export default function EditProfile(props) {
         fd.append('image', theImage)      
 
         //POST comment to database
-       fetch('http://localhost:8000/api/image-upload', {
+       fetch('https://murmuring-beyond-87321.herokuapp.com/api/image-upload', {
             method: 'POST',
             body: fd,
         })
