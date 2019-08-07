@@ -48,6 +48,10 @@ const useForm = (callback) => {
         setError(res.error)
         console.log(res.error)
       })
+
+    window.setTimeout(() => {
+      history.push('/spotify-login');
+    }, 2000)
   }
 
   const handleEditProfileSubmit = (d1, d2) => {
