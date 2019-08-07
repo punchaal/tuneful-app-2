@@ -54,23 +54,12 @@ const useForm = (callback) => {
     }, 2000)
   }
 
-  const handleEditProfileSubmit = (d1, d2) => {
-   // event.preventDefault();
-    //console.log(event)
-   // const  description  = event.target
-   // const image_url = event.target.files[0]
-     //console.log(image_url)
-    //post image to AWS, then grab url
+  const handleEditProfileSubmit = (d1) => {
 
     const description = d1;
-    const image_url = d2;
-
-    console.log (description.value)
-    console.log (image_url)
 
     editProfileService.updateUser({
       description: description.value,
-      image_url : image_url,
     })
       .then(res => {
         description.value = ''
@@ -81,15 +70,6 @@ const useForm = (callback) => {
 
 
     history.push('/profile')
-
-  //  ditProfileService.updateUser({
-  //   description:description.value,
-  // })
-  //   .then(res => {
-  //     description.value = ''
-  //   })
-  //   .catch(res => {
-  //     console.log(res.error)
   }
 
   const handleChange = (event) => {

@@ -17,9 +17,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function EditProfile() {
+export default function EditProfile(props) {
     const [open, setOpen] = React.useState(false);
-    const { values,handleEditProfileSubmit,handleChange} = useForm();
+    const { values,handleEditProfileSubmit, handleChange } = useForm();
 
     const useStyles = makeStyles({
         editButton: {
@@ -43,7 +43,25 @@ export default function EditProfile() {
         setOpen(false);
     }
   
-    
+    const setNewDescription =  (event) => {
+        event.preventDefault();
+        const description = event.target.description
+
+        //POST comment to database
+       fetch(`https://murmuring-beyond-87321.herokuapp.com/api/users/${user_id}`, {
+            method: 'POST',
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json(),
+
+            ).then((data) => {
+                handleEditProfileSubmit(description)             
+            })          
+
+    }
+
     return (
         <Box>
             <Button
@@ -58,13 +76,13 @@ export default function EditProfile() {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title">
 
-                <form onSubmit={handleEditProfileSubmit} className={classes.form} onError={errors => console.log(errors)}>
+                <form onSubmit={setNewImage} className={classes.form} onError={errors => console.log(errors)}>
 
                     <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
 
                     <DialogContent>
                         <DialogContentText>
-                            Please enter a description 
+                            Please enter a description or upload a new profile picture.
                    </DialogContentText>
                         <TextField
                             onChange={handleChange}
@@ -76,11 +94,6 @@ export default function EditProfile() {
                             type="text"
                             fullWidth
                         />
-                        <Box component="span" display="block">
-                            <Typography variant="caption">
-                            </Typography>
-                        </Box>
-
 
                     </DialogContent>
                     <DialogActions>

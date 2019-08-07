@@ -47,6 +47,7 @@ const ProfilePage = () => {
         return results.json()
       })
       .then(data => {
+        console.log(data)
         let theImage = data.image_url;
         if (theImage === undefined || theImage === null) {
           console.log("using default image")          
@@ -76,15 +77,12 @@ const ProfilePage = () => {
   }, []);
 
   useEffect(() => {
-
-
     try {
        userPostsState.map(item => console.log(item.id))
     }
     catch (e) {
         setUserPostsState([])
     }
-
   })
 
   const profileChange = (e) => {
