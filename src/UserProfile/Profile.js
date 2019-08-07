@@ -46,22 +46,17 @@ const ProfilePage = () => {
         return results.json()
       })
       .then(data => {
-        console.log(data)
-        console.log(data.description)
-        //console.log(data.image_url)
         let theImage = data.image_url;
-        console.log(theImage)
         if (theImage === undefined || theImage === null) {
           console.log("using default image")          
-          theImage = "http://www.accountingweb.co.uk/sites/all/modules/custom/sm_pp_user_profile/img/default-user.png"
+          theImage = "https://icon-library.net/images/default-user-icon/default-user-icon-4.jpg"
         }
-        console.log(theImage)
         setUserProfileState({
           user: {
             ...userProfileState.user,
-            first_name: data.first_name,
-            last_name: data.last_name,
-            description: data.description,
+            first_name: data[0].first_name,
+            last_name: data[0].last_name,
+            description: data[0].description,
             image: theImage
           }
         })
@@ -157,18 +152,6 @@ const ProfilePage = () => {
             </Grid>
           </Grid>
         </Box>
-
-        <Grid container spacing={4}>
-          {userPostsState.reverse().map((item) => (
-            <Post
-              post_data={item}
-              key={item.id+1}
-              image_url={item.image_url}
-              id={item.id}
-            ></Post>
-
-          ))}
-        </Grid>
       </Box>
     </React.Fragment>
   );
