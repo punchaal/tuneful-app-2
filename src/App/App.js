@@ -25,7 +25,7 @@ export default class App extends Component {
           <PrivateRoute path='/share-music' component={ShareMusic} />
           <PrivateRoute path='/discover' component={DiscoverFeed} />
           <Route path='/spotify-login' component={() => {
-            window.location.href = 'http://localhost:8000/api/spotify-login';
+            window.location.href = 'https://murmuring-beyond-87321.herokuapp.com/api/spotify-login';
             return null;
           }} />
         </Switch>
