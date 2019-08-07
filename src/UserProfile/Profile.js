@@ -55,9 +55,9 @@ const ProfilePage = () => {
         setUserProfileState({
           user: {
             ...userProfileState.user,
-            first_name: data[0].first_name,
-            last_name: data[0].last_name,
-            description: data[0].description,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            description: data.description,
             image: theImage
           }
         })
