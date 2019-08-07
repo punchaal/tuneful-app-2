@@ -19,7 +19,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function EditProfile() {
     const [open, setOpen] = React.useState(false);
-    const { values,handleEditProfileSubmit} = useForm();
+    const { values,handleEditProfileSubmit,handleChange} = useForm();
 
     const useStyles = makeStyles({
         editButton: {
@@ -58,7 +58,7 @@ export default function EditProfile() {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title">
 
-                <form onSubmit={setNewImage} className={classes.form} onError={errors => console.log(errors)}>
+                <form onSubmit={handleEditProfileSubmit} className={classes.form} onError={errors => console.log(errors)}>
 
                     <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
 
@@ -67,7 +67,7 @@ export default function EditProfile() {
                             Please enter a description 
                    </DialogContentText>
                         <TextField
-                            onChange={handleEditProfileSubmit}
+                            onChange={handleChange}
                             autoFocus
                             value={values.description}
                             margin="dense"
@@ -78,7 +78,6 @@ export default function EditProfile() {
                         />
                         <Box component="span" display="block">
                             <Typography variant="caption">
-                                {photoData.name}       
                             </Typography>
                         </Box>
 
