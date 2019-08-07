@@ -46,17 +46,13 @@ const Header = () => {
   useEffect(() => {
 
     //get user data
-    fetch(`http://localhost:8000/api/users/${user_id}`)
+    fetch(`https://murmuring-beyond-87321.herokuapp.com/api/users/${user_id}`)
       .then(results => {
         return results.json()
       })
       .then(data => {
-        console.log(data)
-       // console.log(data.description)
-        //console.log(data.image_url)
         let theImage = data.image_url;
         if (theImage === undefined) {
-         // console.log("using default image")
           theImage = "http://www.accountingweb.co.uk/sites/all/modules/custom/sm_pp_user_profile/img/default-user.png"
         }
         setUserProfileState({
