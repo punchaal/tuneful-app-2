@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 TEAM SIAKAM
 
 Spotify Social - Client
@@ -79,10 +78,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-=======
-Tuneful
-
-By: Team Siakam
-
-Tuneful is a new social media website that allows you to connect to your Spotify account and display your musical persona via a curated profile. Friends can comment, like and share posts. An Instagram for music!
->>>>>>> 3a46c9e4a7f4327429a0f606df1c62aaf5a07309
