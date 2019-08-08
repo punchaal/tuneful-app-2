@@ -58,6 +58,8 @@ const useForm = (callback) => {
 
     const description = event.target;
 
+    console.log("We are working")
+
     editProfileService.updateUser({
       description: description.value,
     })
