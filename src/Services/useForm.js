@@ -54,9 +54,9 @@ const useForm = (callback) => {
     }, 2000)
   }
 
-  const handleEditProfileSubmit = (d1) => {
+  const handleEditProfileSubmit = (event) => {
 
-    const description = d1;
+    const description = event.target;
 
     editProfileService.updateUser({
       description: description.value,

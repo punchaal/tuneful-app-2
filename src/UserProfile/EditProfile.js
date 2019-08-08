@@ -43,25 +43,6 @@ export default function EditProfile(props) {
     function handleClose() {
         setOpen(false);
     }
-  
-    const setNewDescription =  (event) => {
-        event.preventDefault();
-        const description = event.target.description
-
-        //POST comment to database
-       fetch(`https://murmuring-beyond-87321.herokuapp.com/api/users/${user_id}`, {
-            method: 'PATCH',
-        })
-            .then(res =>
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json(),
-
-            ).then((data) => {
-                handleEditProfileSubmit(description)             
-            })          
-
-    }
 
     return (
         <Box>
@@ -77,13 +58,13 @@ export default function EditProfile(props) {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title">
 
-                <form onSubmit={setNewDescription} className={classes.form} onError={errors => console.log(errors)}>
+                <form onSubmit={handleEditProfileSubmit} className={classes.form} onError={errors => console.log(errors)}>
 
                     <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
 
                     <DialogContent>
                         <DialogContentText>
-                            Please enter a description or upload a new profile picture.
+                            Please enter a description about yourself or about your interests.
                    </DialogContentText>
                         <TextField
                             onChange={handleChange}
