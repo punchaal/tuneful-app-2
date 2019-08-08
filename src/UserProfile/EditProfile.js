@@ -50,7 +50,7 @@ export default function EditProfile(props) {
 
         //POST comment to database
        fetch(`https://murmuring-beyond-87321.herokuapp.com/api/users/${user_id}`, {
-            method: 'POST',
+            method: 'PATCH',
         })
             .then(res =>
                 (!res.ok)
