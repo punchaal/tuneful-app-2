@@ -57,7 +57,7 @@ const useForm = (callback) => {
   const handleEditProfileSubmit = (event) => {
     event.preventDefault();
     const description = event.target;
-    console.log(description.value)
+    console.log(description)
 
     editProfileService.updateUser({
       description: description.value,
