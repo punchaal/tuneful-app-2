@@ -69,7 +69,7 @@ const useForm = (callback) => {
 
       window.setTimeout(() => {
         history.push('/profile');
-      }, 5000)
+      }, 2000)
   }
 
   const handleChange = (event) => {
