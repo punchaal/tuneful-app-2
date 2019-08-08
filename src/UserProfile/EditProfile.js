@@ -58,14 +58,14 @@ export default function EditProfile(props) {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title">
 
-                <form onSubmit={handleEditProfileSubmit} className={classes.form} onError={errors => console.log(errors)}>
-
+               
                     <DialogTitle id="form-dialog-title">Edit Profile</DialogTitle>
 
                     <DialogContent>
                         <DialogContentText>
                             Please enter a description about yourself or about your interests.
                    </DialogContentText>
+                   <form onSubmit={handleEditProfileSubmit} className={classes.form} onError={errors => console.log(errors)}>
                         <TextField
                             onChange={handleChange}
                             autoFocus
@@ -76,8 +76,6 @@ export default function EditProfile(props) {
                             name="description"
                             fullWidth
                         />
-
-                    </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary">
                             Cancel
@@ -86,7 +84,8 @@ export default function EditProfile(props) {
                             Enter
                       </Button>
                     </DialogActions>
-                </form>
+                    </form>
+                    </DialogContent>
             </Dialog>
         </Box>
     );
