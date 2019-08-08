@@ -2,13 +2,13 @@ import config from '../config'
 import user_id from './get-user-id'
 
 const editProfileService = {
-    updateUser({ description}) {
+    updateUser({description}) {
       return fetch(`${config.API_ENDPOINT}/users/${user_id}`, {
+        method:'PATCH',
         headers: {
           'content-type': 'application/json',
-          '_method': 'PATCH',
         },
-        body: JSON.stringify({ description}),
+        body: JSON.stringify({description}),
       })
         .then(res =>
           (!res.ok)
