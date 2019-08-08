@@ -74,7 +74,6 @@ export default function EditProfile(props) {
                             id="description"
                             label="Description"
                             name="description"
-                            type="text"
                             fullWidth
                         />
 
