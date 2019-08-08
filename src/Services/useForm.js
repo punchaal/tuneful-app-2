@@ -66,10 +66,6 @@ const useForm = (callback) => {
       .catch(res => {
         console.log(res.error)
       })
-
-      window.setTimeout(() => {
-        history.push('/profile');
-      }, 2000)
   }
 
   const handleChange = (event) => {
