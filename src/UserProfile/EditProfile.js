@@ -10,16 +10,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import theme from './instapaper/theme/instapaper/theme';
 import Slide from '@material-ui/core/Slide';
 import useForm from "../Services/useForm";
-import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import user_id from '../Services/get-user-id'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function EditProfile(props) {
+    
     const [open, setOpen] = React.useState(false);
+    
     const { values,handleEditProfileSubmit, handleChange } = useForm();
 
     const useStyles = makeStyles({
@@ -73,6 +73,7 @@ export default function EditProfile(props) {
                             margin="dense"
                             id="description"
                             label="Description"
+                            name="description"
                             type="text"
                             fullWidth
                         />

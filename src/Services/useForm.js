@@ -55,10 +55,8 @@ const useForm = (callback) => {
   }
 
   const handleEditProfileSubmit = (event) => {
-
     const description = event.target;
-
-    console.log("We are working")
+    console.log(description)
 
     editProfileService.updateUser({
       description: description.value,
@@ -73,7 +71,7 @@ const useForm = (callback) => {
 
       window.setTimeout(() => {
         history.push('/profile');
-      }, 2000)
+      }, 5000)
   }
 
   const handleChange = (event) => {
